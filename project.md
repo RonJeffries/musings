@@ -1,5 +1,7 @@
 # Project Description for the XProgramming Conversion
 
+Update: see "Work to Date"
+
 ## XProgramming.com background
 
 My site, XProgramming.com, is ten or more years old. It was initially a plain HTML site, which I administered with CoffeeCup or something. 
@@ -151,5 +153,78 @@ So I'd like to know ways to help Joe, and the ones I do know, I do. I write arti
 When I can, I write for, or talk to, Joe's managers, to help them see that there may be better ways. I'm working as hard and smart as I can to get the alternatives out there. This is part of that.
 
 I'm trying to help everyone, including Joe. Right now, I don't have much help for him beyond reporting what I know, showing what I do, and all that stuff that I do. I can't help wishing for more.
+
+## Work to Date
+
+### Current Work
+
+*This really isn't worth doing unless all of XProgramming can be completely and satisfactorily converted.* 
+
+A new little site of new stuff is interesting but not the product we want. Nor is it much of a step to the real project. the big bite is in the conversion. At the beginning we knew very little about that. We know more now. I mentioned the size: 400+ articles, many assets, 400+ meg. 
+
+I really don't see how to get any real business value if the entire site cannot be converted. I could imagine not changing the look, but the cost of changing the look is to add a new CSS, so that's no real saving. The cost is in the conversion. So far we have done the following things, using the WordPress Export, and the site itself. The Export is 250 meg and contains the text and index info for the site.
+
+* Extract each Post into a separate folder named as the article slug
+* Put author, date, category, title into a YAML section at the top of the article.
+* Markdownify simple structures from HTML (the export format) to Markdown. This is relatively simple, a gsub over the article text. Slightly tricky in that you have to get it right and in right order. Included are:
+    * p tags get removed and paragraphs spaced between
+    * h1 through hn get changed to consecutive hash marks
+    * i tag, b tag, em, and strong get changed to asterisk format
+    * hr gets changed to asterisk form
+    * enclose article in `raw` markers to stop Liquid processing
+* Identify references in img tags and download them with HTTP into the correct article folder
+* Identify references in hrefs ditto.
+
+A few things remain to be done in the articles, notably patching up all the img tags and links to refer to the assets in the article folder. This, we hope, amounts to removing the www.xprogramming.com from the existing refs and leaving just the asset file name.
+
+We want to deal with nested block quotes and a few other odds and ends.
+
+Every time we do one of these, we seem to discover three more. We're hoping we're near the end but have nothing but intuition to tell us that we are.
+
+### Changing Technology: Ruby/Sinatra to Ruby/Jekyll
+
+We thought at first that we would do the project in Ruby/Sinatra. Most of the scraping done above would have to be done for that. It's just that the run-time approach would have been different. 
+
+We did a fair amount of learning with Sinatra and some of that transfers at least conceptually. 
+
+But then I realized that maintaining a Ruby site wasn't that much easier than maintaining WP, so we agreed it made more sense to go to static. 
+
+That moved us to using Jekyll. 
+
+### Status
+
+We have a scraper project that is pulling info out of the WordPress and building more and more acceptable article folders in Markdown. We think we'll have that done next week.
+
+We have a Jekyll site running locally that looks pretty good. It has no real indexes but can display the Kate Oneal articles and the first N other articles on the home page. It links to the appropriate article from the index. The articles are showing the pictures, but not from the right folders: they're still being read from XProgramming. Scraper additions mentioned above will fix that.
+
+I would have pushed the Jekyll to github today but I'm doing this first, because I want to pair on getting the Jekyll for the real site hooked up to my main github user page: it's a bit tricky for my level of understanding. This exercise is giving me a good sense of what needs to be done. I'm not sure yet just what a good way to do it will be.
+
+The site has a decent look on a rudimentary CSS. To look good it'll need more CSSing. If we push it to a new URL it can be there to look at (which has some emotional value at least).
+
+There remains the issue of putting it on my real ISP, which I really want to do. That will require deploying it differently, since github has special features for deploying Jekyll sites. We tentatively think we'll use a smart FTP program to avoid pushing the whole site on every change.
+
+### Costs to Date
+
+All this has been the work of nearly a month (half-days the way we do things). It has relied on the existing knowledge of Bill Tozier, who is helping with the project and who has done similar things in the past. Basically we are learning or relearning everything but he has a decent sense of where to look, which gem, and so on. We probably have approximately our equivalent of two person months into this, nominally about $4000. Less if you count how few hours we work. That's pretty close to the desired budget and we cannot as yet deploy a viable product. 
+
+## Implications for Estimating
+
+I'm near an elapsed month in, plus a few thousand actual dollars. I am now quite sure it will work, but I was not sure two weeks ago. I still can't really estimate very well when it'll be done, but if we can keep working, I figure sometime in December at the latest.
+
+This is really not comfortable. And if you consider a real company with a real project big enough for a real team, all the numbers and uncertainty scale up, resulting in something that will not be comfortable for that team and its management.
+
+The bugaboo is the big bite, the need to bring all of XProgramming up on the new technology. Probably more than half of the work is in masticating XProgramming into shape. The other more than half is in the working out of the Jekyll, especially indexing. And there will be a bit of JavaScript too, if we want to support the current dynamic recommendation of a random article on the home page.
+
+If we were just creating a new blog, it would be nearly possible to estimate. Even then, we don't know the right questions to ask and we don't really know how long it'll take to do things like build an index.
+
+We don't even know enough to budget very well. In early days, it seems to me that the only honest thing we can say about an unknown project is that if we work for a while, we'll know more. If we can work in an Agile fashion, we can show results, and we can hope that the results look good enough to continue working.
+
+But to get started ... it seems to me that we still have to tell the boss that we need to spend a few weeks (which means a big chunk of our year and our budget) and that the answer might turn out to be "this is feasless". 
+
+Truth is, that's surely better than saying "OK" and then maybe spending a very big chunk and failing. But to a sufficiently weak person -- and we are all weak on some days -- it might be easier to say "OK" and hope for the best.
+
+The only way forward that I see for Joe Programmer is to learn how to work incrementally, and to use that ability to support his replying to estimation requests with proposed experiments. 
+
+I think that's a hard row to sow. I wish I had something better. Right now, I haven't.
 
 ## More Later ...
