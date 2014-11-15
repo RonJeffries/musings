@@ -225,6 +225,6 @@ Truth is, that's surely better than saying "OK" and then maybe spending a very b
 
 The only way forward that I see for Joe Programmer is to learn how to work incrementally, and to use that ability to support his replying to estimation requests with proposed experiments. 
 
-I think that's a hard row to sow. I wish I had something better. Right now, I haven't.
+I think that's a hard row to hoe. I wish I had something better. Right now, I haven't.
 
 ## More Later ...
